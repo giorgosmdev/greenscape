@@ -5,7 +5,7 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   // Update site URL before deployment
   site: "https://giorgosmdev.github.io",
-  base: "greenscape",
+  base: "Greenscape",
   integrations: [
     {
       name: "dev-only-pages",
