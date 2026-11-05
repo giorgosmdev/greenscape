@@ -1,0 +1,85 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props extends HTMLAttributes<"div"> {
+  quote: string;
+  name: string;
+  image: ImageMetadata;
+  alt: string;
+}
+
+const { quote, name, image, alt, class: className, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={["testimonial-card", className]}>
+  <div>
+    <Image
+      class="testimonial-card__image"
+      src={image}
+      alt={alt}
+      widths={[200, 400]}
+      sizes="12.5rem"
+    />
+  </div>
+  <figure class="testimonial-card__content">
+    <blockquote class="testimonial-card__quote text-style-quote">
+      {quote}
+    </blockquote>
+    <figcaption class="testimonial-card__attribution">
+      <p class="testimonial-card__name">— {name}</p>
+    </figcaption>
+  </figure>
+</div>
+
+<style is:global>
+  @layer components {
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-step-6);
+      padding: var(--space-step-5);
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-secondary);
+    }
+
+    .testimonial-card__image {
+      max-inline-size: 30%;
+      block-size: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-md);
+    }
+
+    .testimonial-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-16);
+    }
+
+    @media screen and (width > 37.5em) and (width < 56.25em),
+      screen and (width > 75em) {
+      .testimonial-card {
+        flex-direction: row;
+      }
+
+      .testimonial-card__image {
+        max-inline-size: 12.5rem;
+        aspect-ratio: auto;
+      }
+
+      .testimonial-card__content {
+        flex-basis: 23rem;
+        justify-content: space-between;
+      }
+    }
+
+    @media screen and (width > 75em) {
+      .testimonial-card {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+</style>

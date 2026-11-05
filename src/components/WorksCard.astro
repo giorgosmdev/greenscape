@@ -1,0 +1,52 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  number: string;
+  heading: string;
+  text: string;
+  headingLevel: 2 | 3 | 4 | 5 | 6;
+}
+
+const {
+  number,
+  heading,
+  text,
+  headingLevel,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Heading = `h${headingLevel}` as const;
+---
+
+<div {...rest} class:list={["works-card", className]}>
+  <div class="works-card__header">
+    <span class="works-card__number text-style-h4" aria-hidden="true">
+      {number}
+    </span>
+  </div>
+  <div class="works-card__content">
+    <Heading class="works-card__heading">{heading}</Heading>
+    <p class="works-card__text">{text}</p>
+  </div>
+</div>
+
+<style is:global>
+  @layer components {
+    .works-card {
+      block-size: 100%;
+      padding: var(--space-step-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-card-gap);
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-secondary);
+    }
+
+    .works-card__heading {
+      margin-block-end: var(--space-h3-margin);
+      text-transform: capitalize;
+    }
+  }
+</style>

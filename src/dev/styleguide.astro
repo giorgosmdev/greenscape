@@ -1,0 +1,735 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
+
+<BaseLayout pageTitle="Styleguide">
+  <section class="sg-intro section" data-theme="dark">
+    <div class="container">
+      <div class="sg-intro__layout">
+        <h1 class="sg-intro__heading">Styleguide</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-type section">
+    <div class="container flow-section">
+      <div class="sg-header">
+        <h2 class="sg-header__heading">01. Typography</h2>
+      </div>
+
+      <!-- Type specimen -->
+      <div class="sg-row sg-row--2col sg-specimen--primary">
+        <div class="sg-content-group">
+          <p class="sg-type__specimen">Aa</p>
+          <p class="sg-type__font">Lora</p>
+        </div>
+
+        <div class="sg-content-group flow-content">
+          <ul class="sg-type__weights">
+            <li class="sg-type__weight">Regular</li>
+            <li class="sg-type__weight sg-type__weight--medium">
+              Medium
+            </li>
+            <!-- <li class="sg-type__weight sg-type__weight--semibold">
+              Semibold
+            </li>
+            <li class="sg-type__weight sg-type__weight--bold">
+              Bold
+            </li> -->
+          </ul>
+
+          <ul class="sg-type__charsets">
+            <li class="sg-type__charset sg-type__charset--uppercase">
+              abcdefghijklmnopqrstuvwxyz
+            </li>
+            <li class="sg-type__charset">abcdefghijklmnopqrstuvwxyz</li>
+            <li class="sg-type__charset">1234567890!?$&*#@</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Type specimen -->
+      <div class="sg-row sg-row--2col sg-specimen--secondary">
+        <div class="sg-content-group">
+          <p class="sg-type__specimen">Aa</p>
+          <p class="sg-type__font">Metropolis</p>
+        </div>
+
+        <div class="sg-content-group flow-content">
+          <ul class="sg-type__weights">
+            <li class="sg-type__weight">Regular</li>
+            <!-- <li class="sg-type__weight sg-type__weight--medium">
+              Medium
+            </li> -->
+            <li class="sg-type__weight sg-type__weight--semibold">
+              Semibold
+            </li>
+            <!-- <li class="sg-type__weight sg-type__weight--bold">
+              Bold
+            </li> -->
+          </ul>
+
+          <ul class="sg-type__charsets">
+            <li class="sg-type__charset sg-type__charset--uppercase">
+              abcdefghijklmnopqrstuvwxyz
+            </li>
+            <li class="sg-type__charset">abcdefghijklmnopqrstuvwxyz</li>
+            <li class="sg-type__charset">1234567890!?$&*#@</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h0">Heading H0</p>
+        <span class="sg-label text-style-small">Class: text-style-h0</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h1">Heading H1</p>
+        <span class="sg-label text-style-small">Class: text-style-h1</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h2">Heading H2</p>
+        <span class="sg-label text-style-small">Class: text-style-h2</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h3">Heading H3</p>
+        <span class="sg-label text-style-small">Class: text-style-h3</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h4">Heading H4</p>
+        <span class="sg-label text-style-small">Class: text-style-h4</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h5">Heading H5</p>
+        <span class="sg-label text-style-small">Class: text-style-h5</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-h6">Heading H6</p>
+        <span class="sg-label text-style-small">Class: text-style-h6</span>
+      </div>
+
+      <div class="sg-row flow-content">
+        <p class="text-style-body">
+          Wintermute reveals itself to Case and explains that it is one half of
+          a super-AI entity planned by the family. It has been programmed with a
+          need to merge with its other half, Neuromancer, and has recruited
+          Armitage and his team since it cannot achieve this goal by itself.
+          Case is tasked with entering cyberspace to pierce the software
+          barriers with an icebreaker program. Riviera is to obtain the password
+          to the lock from Lady Jane Marie-France Tessier-Ashpool, the CEO of
+          the family’s corporation.
+        </p>
+        <span class="sg-label text-style-small">Class: text-style-body</span>
+      </div>
+
+      <div class="sg-row flow-content">
+        <p class="text-style-large">
+          Wintermute reveals itself to Case and explains that it is one half of
+          a super-AI entity planned by the family. It has been programmed with a
+          need to merge with its other half, Neuromancer, and has recruited
+          Armitage and his team since it cannot achieve this goal by itself.
+          Case is tasked with entering cyberspace to pierce the software
+          barriers with an icebreaker program. Riviera is to obtain the password
+          to the lock from Lady Jane Marie-France Tessier-Ashpool, the CEO of
+          the family’s corporation.
+        </p>
+        <span class="sg-label text-style-small">Class: text-style-large</span>
+      </div>
+
+      <div class="sg-row flow-content">
+        <p class="text-style-small">
+          Wintermute reveals itself to Case and explains that it is one half of
+          a super-AI entity planned by the family. It has been programmed with a
+          need to merge with its other half, Neuromancer, and has recruited
+          Armitage and his team since it cannot achieve this goal by itself.
+          Case is tasked with entering cyberspace to pierce the software
+          barriers with an icebreaker program. Riviera is to obtain the password
+          to the lock from Lady Jane Marie-France Tessier-Ashpool, the CEO of
+          the family’s corporation.
+        </p>
+        <span class="sg-label text-style-small">Class: text-style-small</span>
+      </div>
+
+      <div class="sg-row sg-row--3col">
+        <div class="sg-content-group sg-content-group--vertical">
+          <a href="#" class="text-style-link">
+            Link with link-class
+          </a>
+          <span class="sg-label text-style-small">Class: text-style-link</span>
+        </div>
+
+        <div class="sg-content-group">
+          <a href="#" class="sg-placeholder-class">
+            Link with any class
+          </a>
+        </div>
+
+        <div class="sg-content-group">
+          <a href="#">Link with no class</a>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-eyebrow">Eyebrow</p>
+        <span class="sg-label text-style-small">Class: text-style-eyebrow</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-label">Label</p>
+        <span class="sg-label text-style-small">Class: text-style-label</span>
+      </div>
+
+      <div class="sg-row">
+        <p class="text-style-quote">Quote</p>
+        <span class="sg-label text-style-small">Class: text-style-quote</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-color section">
+    <div class="container flow-section">
+      <div class="sg-header">
+        <h2 class="sg-header__heading">02. Color</h2>
+      </div>
+
+      <div class="sg-row flow-content">
+        <h3>Brand</h3>
+        <ul class="sg-color__layout">
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--brand-200"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Brand 200</span>
+              <span class="sg-label text-style-small">--color-brand-200</span>
+              <span class="sg-label text-style-small">hsl(113 17% 82%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--brand-700"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Brand 700</span>
+              <span class="sg-label text-style-small">--color-brand-700</span>
+              <span class="sg-label text-style-small">hsl(138 15% 29.6%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--brand-900"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Brand 900</span>
+              <span class="sg-label text-style-small">--color-brand-900</span>
+              <span class="sg-label text-style-small">hsl(141 18% 18.2%)</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sg-row flow-content">
+        <h3>Accent</h3>
+        <ul class="sg-color__layout">
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--accent-500"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Accent 500</span>
+              <span class="sg-label text-style-small">--color-accent-500</span>
+              <span class="sg-label text-style-small">
+                hsl(18.4 40.6% 51.2%)
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sg-row flow-content">
+        <h3>Neutral</h3>
+        <ul class="sg-color__layout">
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--white"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">White</span>
+              <span class="sg-label text-style-small">--color-white</span>
+              <span class="sg-label text-style-small">hsl(0 0% 100%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--neutral-100"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Neutral 100</span>
+              <span class="sg-label text-style-small">--color-neutral-100</span>
+              <span class="sg-label text-style-small">hsl(42 39% 93.5%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--neutral-200"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Neutral 200</span>
+              <span class="sg-label text-style-small">--color-neutral-200</span>
+              <span class="sg-label text-style-small">hsl(41 29% 85%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--neutral-700"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Neutral 700</span>
+              <span class="sg-label text-style-small">--color-neutral-700</span>
+              <span class="sg-label text-style-small">hsl(90 3% 26%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--neutral-900"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Neutral 900</span>
+              <span class="sg-label text-style-small">--color-neutral-900</span>
+              <span class="sg-label text-style-small">hsl(90 5% 16%)</span>
+            </div>
+          </li>
+          <li class="sg-color__swatch">
+            <div class="sg-color__sample sg-color__sample--black"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Black</span>
+              <span class="sg-label text-style-small">--color-black</span>
+              <span class="sg-label text-style-small">hsl(0 0% 0%)</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-theme section">
+    <div class="container flow-section">
+      <div class="sg-header">
+        <h2 class="sg-header__heading">03. Theme</h2>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-theme__group flow-content">
+          <h3>Light theme</h3>
+
+          <p>
+            Wintermute reveals itself to Case and explains that it is one half
+            of a super-AI entity planned by the family. It has been programmed
+            with a need to merge with its other half, Neuromancer, and has
+            recruited Armitage and his team since it cannot achieve this goal by
+            itself. Case is tasked with entering cyberspace to pierce the
+            software barriers with an icebreaker program. Riviera is to obtain
+            the password to the lock from Lady Jane Marie-France
+            Tessier-Ashpool, the CEO of the family’s corporation.
+          </p>
+
+          <div class="sg-button-group">
+            <Button href="#" label="Primary" variant="primary" />
+            <Button href="#" label="Secondary" variant="secondary" />
+          </div>
+
+          <div class="sg-content-group sg-content-group--horizontal">
+            <a href="#" class="text-style-link">
+              Link with link-class
+            </a>
+            <a href="#" class="sg-placeholder-class">
+              Link with any class
+            </a>
+            <a href="#">Link with no class</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-row">
+        <div class="sg-theme__group flow-content" data-theme="dark">
+          <h3>Dark theme</h3>
+
+          <p>
+            Wintermute reveals itself to Case and explains that it is one half
+            of a super-AI entity planned by the family. It has been programmed
+            with a need to merge with its other half, Neuromancer, and has
+            recruited Armitage and his team since it cannot achieve this goal by
+            itself. Case is tasked with entering cyberspace to pierce the
+            software barriers with an icebreaker program. Riviera is to obtain
+            the password to the lock from Lady Jane Marie-France
+            Tessier-Ashpool, the CEO of the family’s corporation.
+          </p>
+
+          <div class="sg-button-group">
+            <Button href="#" label="Primary" variant="primary" />
+            <Button href="#" label="Secondary" variant="secondary" />
+          </div>
+
+          <div class="sg-content-group sg-content-group--horizontal">
+            <a href="#" class="text-style-link">
+              Link with link-class
+            </a>
+            <a href="#" class="sg-placeholder-class">
+              Link with any class
+            </a>
+            <a href="#">Link with no class</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-spacing section">
+    <div class="container flow-section">
+      <div class="sg-header">
+        <h2 class="sg-header__heading">04. Spacing</h2>
+      </div>
+
+      <div class="sg-row">
+        <ul class="sg-spacing__layout">
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-1"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-1</span>
+              <span class="sg-label text-style-small">4px → 4px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-2"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-2</span>
+              <span class="sg-label text-style-small">8px → 8px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-3"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-3</span>
+              <span class="sg-label text-style-small">8px → 16px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-5"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-5</span>
+              <span class="sg-label text-style-small">16px → 24px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-6"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-6</span>
+              <span class="sg-label text-style-small">24px → 32px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-7"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-7</span>
+              <span class="sg-label text-style-small">24px → 40px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-8"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-8</span>
+              <span class="sg-label text-style-small">32px → 40px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-9"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-9</span>
+              <span class="sg-label text-style-small">32px → 48px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-10"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-10</span>
+              <span class="sg-label text-style-small">40px → 64px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-11"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-11</span>
+              <span class="sg-label text-style-small">48px → 80px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-12"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-12</span>
+              <span class="sg-label text-style-small">64px → 96px</span>
+            </div>
+          </li>
+          <li class="sg-spacing__step">
+            <div class="sg-spacing__sample sg-spacing__sample--step-13"></div>
+            <div class="sg-label-group">
+              <span class="sg-label text-style-small">Step-13</span>
+              <span class="sg-label text-style-small">80px → 120px</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-ui section">
+    <div class="container flow-section">
+      <div class="sg-header">
+        <h2 class="sg-header__heading">05. UI elements</h2>
+      </div>
+
+      <div class="sg-row flow-content">
+        <h3>Buttons</h3>
+        <div class="sg-button-group">
+          <Button href="#" variant="primary" label="Primary" />
+          <Button href="#" variant="secondary" label="Secondary" />
+        </div>
+      </div>
+
+      <div class="sg-row flow-content">
+        <h3>Form elements</h3>
+
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  @layer pages {
+    body {
+      background-color: var(--color-white);
+    }
+
+    p {
+      max-inline-size: 36em;
+    }
+
+    .sg-intro__heading {
+      letter-spacing: -0.03em;
+    }
+
+    .sg-intro__heading,
+    .sg-type__specimen {
+      font-size: 9rem;
+      line-height: 1.1;
+      color: var(--color-text-primary);
+    }
+
+    .sg-specimen--primary {
+      font-family: var(--font-family-lora);
+    }
+
+    .sg-specimen--secondary {
+      font-family: var(--font-family-metropolis);
+      --font-primary: var(--font-family-metropolis);
+    }
+
+    .sg-header {
+      padding-block-end: var(--space-step-6);
+      border-block-end: var(--border-width) solid var(--color-neutral-300);
+    }
+
+    .sg-row {
+      padding-block-end: var(--space-flow-section);
+      border-block-end: var(--border-width) solid var(--color-neutral-300);
+    }
+
+    .sg-row--2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: end;
+      gap: var(--layout-grid-gap);
+    }
+
+    .sg-row--3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--layout-grid-gap);
+    }
+
+    .sg-content-group--horizontal {
+      display: flex;
+      align-items: center;
+      gap: var(--size-16);
+    }
+
+    .sg-label-group,
+    .sg-content-group--vertical {
+      display: grid;
+      gap: var(--space-step-1);
+    }
+
+    .sg-label {
+      display: inline-block;
+    }
+
+    .sg-button-group {
+      display: flex;
+      gap: var(--size-16);
+    }
+
+    .sg-intro {
+      padding-block: 10rem;
+      background-color: var(--color-black);
+    }
+
+    .sg-intro__layout {
+      display: grid;
+      gap: var(--space-step-3);
+    }
+
+    .sg-type__weights {
+      display: flex;
+      gap: var(--space-step-3);
+    }
+
+    .sg-type__weight--medium {
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .sg-type__weight--semibold {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .sg-type__weight--bold {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .sg-type__charset {
+      font-size: 1.5rem;
+    }
+
+    .sg-type__charset--uppercase {
+      text-transform: uppercase;
+    }
+
+    .sg-color__layout {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--layout-grid-gap);
+    }
+
+    .sg-color__swatch {
+      display: grid;
+      gap: var(--space-step-3);
+    }
+
+    .sg-color__sample {
+      aspect-ratio: 16 / 9;
+    }
+
+    .sg-color__sample--brand-200 {
+      background-color: var(--color-brand-200);
+    }
+
+    .sg-color__sample--brand-700 {
+      background-color: var(--color-brand-700);
+    }
+
+    .sg-color__sample--brand-900 {
+      background-color: var(--color-brand-900);
+    }
+
+    .sg-color__sample--accent-500 {
+      background-color: var(--color-accent-500);
+    }
+
+    .sg-color__sample--white {
+      background-color: var(--color-white);
+      border: var(--border-width) solid var(--color-border);
+    }
+
+    .sg-color__sample--neutral-100 {
+      background-color: var(--color-neutral-100);
+    }
+
+    .sg-color__sample--neutral-200 {
+      background-color: var(--color-neutral-200);
+    }
+
+    .sg-color__sample--neutral-700 {
+      background-color: var(--color-neutral-700);
+    }
+
+    .sg-color__sample--neutral-900 {
+      background-color: var(--color-neutral-900);
+    }
+
+    .sg-color__sample--black {
+      background-color: var(--color-black);
+    }
+
+    .sg-theme__group {
+      background-color: var(--color-surface-primary);
+      padding: var(--space-step-5);
+    }
+
+    .sg-spacing__layout {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      column-gap: var(--space-step-3);
+      row-gap: var(--space-step-6);
+    }
+
+    .sg-spacing__step {
+      display: grid;
+      gap: var(--space-step-2);
+    }
+
+    .sg-spacing__sample {
+      block-size: 5rem;
+      background-color: #000;
+    }
+
+    .sg-spacing__sample--step-1 {
+      inline-size: var(--space-step-1);
+    }
+
+    .sg-spacing__sample--step-2 {
+      inline-size: var(--space-step-2);
+    }
+
+    .sg-spacing__sample--step-3 {
+      inline-size: var(--space-step-3);
+    }
+
+    .sg-spacing__sample--step-5 {
+      inline-size: var(--space-step-5);
+    }
+
+    .sg-spacing__sample--step-6 {
+      inline-size: var(--space-step-6);
+    }
+
+    .sg-spacing__sample--step-7 {
+      inline-size: var(--space-step-7);
+    }
+
+    .sg-spacing__sample--step-8 {
+      inline-size: var(--space-step-8);
+    }
+
+    .sg-spacing__sample--step-9 {
+      inline-size: var(--space-step-9);
+    }
+
+    .sg-spacing__sample--step-10 {
+      inline-size: var(--space-step-10);
+    }
+
+    .sg-spacing__sample--step-11 {
+      inline-size: var(--space-step-11);
+    }
+
+    .sg-spacing__sample--step-12 {
+      inline-size: var(--space-step-12);
+    }
+
+    .sg-spacing__sample--step-13 {
+      inline-size: var(--space-step-13);
+    }
+  }
+</style>

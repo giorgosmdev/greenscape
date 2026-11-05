@@ -1,0 +1,233 @@
+/* ------------------------------ */
+/* CSS Custom Properties */
+
+:root {
+  color-scheme: light;
+
+  /* --- Primitives --- */
+
+  /* - Colors - */
+
+  --color-neutral-100: hsl(42 39% 93.5%);
+  --color-neutral-200: hsl(41 29% 85%);
+  --color-neutral-700: hsl(90 3% 26%);
+  --color-neutral-900: hsl(90 5% 16%);
+
+  --color-white: hsl(0 0% 100%);
+  --color-black: hsl(0 0% 0%);
+  --color-transparent-0: hsl(0 0% 100% / 0);
+
+  --color-brand-200: hsl(113 17% 82%);
+  --color-brand-700: hsl(138 15% 29.6%);
+  --color-brand-900: hsl(141 18% 18.2%);
+
+  --color-accent-500: hsl(18.4 40.6% 51.2%);
+
+  /* - Typography - */
+
+  /* Type scale - 1.25 desktop | 1.2 mobile */
+  --font-size-13: 0.8125rem;
+  --font-size-16: 1rem;
+  --font-size-20: 1.25rem;
+  --font-size-25: 1.563rem;
+  --font-size-39: 2.438rem;
+  --font-size-61: 3.8125rem;
+  --font-size-76: 4.75rem;
+
+  /* - Size scale - */
+  --size-0: 0;
+  --size-1: 0.0625rem;
+  --size-2: 0.125rem;
+  --size-4: 0.25rem;
+  --size-8: 0.5rem;
+  --size-12: 0.75rem;
+  --size-16: 1rem;
+  --size-24: 1.5rem;
+  --size-32: 2rem;
+  --size-40: 2.5rem;
+  --size-48: 3rem;
+  --size-64: 4rem;
+  --size-80: 5rem;
+  --size-96: 6rem;
+  --size-120: 7.5rem;
+  --size-128: 8rem;
+
+  /* --- Semantic --- */
+
+  /* - Colors - */
+  --color-surface-primary: var(--color-neutral-100);
+  --color-surface-secondary: var(--color-neutral-200);
+  --color-surface-brand: var(--color-brand-200);
+  --color-surface-accent: var(--color-accent-500);
+
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-700);
+  --color-text-link: var(--color-neutral-900);
+  --color-text-placeholder: var(--color-neutral-700);
+
+  --color-border: var(--color-neutral-200);
+  --color-focus-ring: var(--color-neutral-900);
+
+  /* - Typography - */
+  --font-primary: var(--font-family-lora);
+  --font-secondary: var(--font-family-metropolis);
+  --font-link: var(--font-family-metropolis);
+
+  /* Type scale */
+  /* 40px > 76px */
+  --font-size-h0: clamp(2.5rem, 1.6643rem + 3.4286vw, 4.75rem);
+  /* 33px > 61px */
+  --font-size-h1: clamp(2.0625rem, 1.4125rem + 2.6667vw, 3.8125rem);
+  /* 28px > 39px */
+  --font-size-h2: clamp(1.75rem, 1.4946rem + 1.0476vw, 2.4375rem);
+  /* 19px > 25px */
+  --font-size-h3: clamp(1.1875rem, 1.0482rem + 0.5714vw, 1.5625rem);
+  /* 16px > 20px */
+  --font-size-h4: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  /* 16px */
+  --font-size-h5: var(--font-size-16);
+  /* 16px */
+  --font-size-h6: var(--font-size-16);
+  /* 16px */
+  --font-size-body: var(--font-size-16);
+  /* 16px > 20px */
+  --font-size-quote: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  /* 16px */
+  --font-size-link: var(--font-size-16);
+  /* 13px */
+  --font-size-eyebrow: var(--font-size-13);
+  /* 13px */
+  --font-size-label: var(--font-size-13);
+
+  /* - Layout - */
+
+  /* Page layout */
+  /* Size of the desktop container in the design file */
+  --layout-container-width: 80rem;
+  --layout-grid-gap: var(--size-16);
+  --layout-grid-columns: 2;
+
+  /* Tablet portrait and up */
+  @media screen and (width > 37.5em) {
+    --layout-grid-columns: 6;
+  }
+
+  /* Desktop and up */
+  @media screen and (width > 75em) {
+    --layout-grid-columns: 12;
+  }
+
+  /* Spacing scale */
+  /* 4px → 4px */
+  --space-step-1: 0.25rem;
+  /* 8px → 8px */
+  --space-step-2: 0.5rem;
+  /* 8px → 16px */
+  --space-step-3: clamp(0.5rem, 0.3143rem + 0.7619vw, 1rem);
+  /* 16px → 24px */
+  --space-step-5: clamp(1rem, 0.8143rem + 0.7619vw, 1.5rem);
+  /* 24px → 32px */
+  --space-step-6: clamp(1.5rem, 1.3143rem + 0.7619vw, 2rem);
+  /* 24px → 40px */
+  --space-step-7: clamp(1.5rem, 1.1286rem + 1.5238vw, 2.5rem);
+  /* 32px → 40px */
+  --space-step-8: clamp(2rem, 1.8143rem + 0.7619vw, 2.5rem);
+  /* 32px → 48px */
+  --space-step-9: clamp(2rem, 1.6286rem + 1.5238vw, 3rem);
+  /* 40px → 64px */
+  --space-step-10: clamp(2.5rem, 1.9429rem + 2.2857vw, 4rem);
+  /* 48px → 80px */
+  --space-step-11: clamp(3rem, 2.2571rem + 3.0476vw, 5rem);
+  /* 64px → 96px */
+  --space-step-12: clamp(4rem, 3.2571rem + 3.0476vw, 6rem);
+  /* 80px → 120px */
+  --space-step-13: clamp(5rem, 4.0714rem + 3.8095vw, 7.5rem);
+
+  /* Semantic spacing */
+  /* 64px - 120px */
+  --space-section-padding: clamp(4rem, 2.7rem + 5.3333vw, 7.5rem);
+  /* 24px → 64px */
+  --space-container-padding: clamp(1.5rem, 0.5714rem + 3.8095vw, 4rem);
+  /* 32px → 64px */
+  --space-flow-section: clamp(2rem, 1.2571rem + 3.0476vw, 4rem);
+  /* 16px → 24px */
+  --space-flow-content: var(--space-step-5);
+  /* 24px → 120px */
+  --space-card-gap: clamp(1.5rem, -0.7286rem + 9.1429vw, 7.5rem);
+  /* 8px */
+  --space-h3-margin: var(--size-8);
+
+  /* Border radius */
+  --radius-none: var(--size-0);
+  --radius-sm: var(--size-4);
+  --radius-md: var(--size-8);
+  --radius-lg: var(--size-16);
+  --radius-full: 1000px;
+
+  /* Focus */
+  --focus-ring-width: var(--size-2);
+  --focus-ring-offset: var(--size-4);
+
+  /* Misc */
+  --border-width: 1px;
+
+  /* --- Components --- */
+  --button-border-width: 1.5px;
+
+  --button-primary-background: var(--color-brand-700);
+  --button-primary-background-hover: var(--color-brand-900);
+  --button-primary-border: var(--color-brand-700);
+  --button-primary-border-hover: var(--color-brand-900);
+  --button-primary-label: var(--color-neutral-100);
+  --button-primary-label-hover: var(--color-neutral-100);
+
+  --button-secondary-background: var(--color-transparent-0);
+  --button-secondary-background-hover: var(--color-brand-900);
+  --button-secondary-border: var(--color-brand-700);
+  --button-secondary-border-hover: var(--color-brand-900);
+  --button-secondary-label: var(--color-neutral-900);
+  --button-secondary-label-hover: var(--color-neutral-100);
+
+  --button-tertiary-background: var(--color-neutral-100);
+  --button-tertiary-background-hover: var(--color-neutral-200);
+  --button-tertiary-border: var(--color-neutral-100);
+  --button-tertiary-border-hover: var(--color-neutral-200);
+  --button-tertiary-label: var(--color-neutral-900);
+  --button-tertiary-label-hover: var(--color-neutral-900);
+
+  /* --- Animations --- */
+  --transition-duration-hover: 300ms;
+  --transition-easing-hover: ease-in-out;
+}
+
+/* [data-theme="dark"] {
+  color-scheme: dark;
+  --color-neutral-100: hsl(42 39% 93.5%);
+  --color-neutral-200: hsl(41 29% 85%);
+  --color-neutral-700: hsl(90 3% 26%);
+  --color-neutral-900: hsl(90 5% 16%);
+
+  --color-surface-primary: var(--color-neutral-900);
+  --color-surface-secondary: var(--color-neutral-700);
+
+  --color-text-primary: var(--color-neutral-100);
+  --color-text-secondary: var(--color-neutral-200);
+  --color-text-link: var(--color-neutral-100);
+  --color-text-placeholder: var(--color-brand-400);
+
+  --color-border: var(--color-neutral-200);
+  --color-focus-ring: var(--color-neutral-100);
+
+  --button-primary-background: var(--color-neutral-100);
+  --button-primary-background-hover: var(--color-neutral-100);
+  --button-primary-border: var(--color-neutral-100);
+  --button-primary-border-hover: var(--color-neutral-100);
+  --button-primary-label: var(--color-neutral-900);
+  --button-primary-label-hover: var(--color-neutral-900);
+
+  --button-secondary-background-hover: var(--color-neutral-100);
+  --button-secondary-border: var(--color-neutral-100);
+  --button-secondary-border-hover: var(--color-neutral-100);
+  --button-secondary-label: var(--color-neutral-100);
+  --button-secondary-label-hover: var(--color-neutral-900);
+} */

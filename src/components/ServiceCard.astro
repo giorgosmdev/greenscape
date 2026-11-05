@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  heading: string;
+  text: string;
+  headingLevel: 2 | 3 | 4 | 5 | 6;
+}
+
+const { heading, text, headingLevel, class: className, ...rest } = Astro.props;
+
+const Heading = `h${headingLevel}` as const;
+---
+
+<div {...rest} class:list={["service-card", className]}>
+  <Heading class="service-card__heading">{heading}</Heading>
+  <p class="service-card__text">{text}</p>
+</div>
+
+<style is:global>
+  @layer components {
+    .service-card {
+      padding: var(--size-24);
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-secondary);
+
+      .service-card__heading {
+        margin-block-end: var(--space-h3-margin);
+      }
+    }
+  }
+</style>

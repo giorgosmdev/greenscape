@@ -1,0 +1,73 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import IconRight from "../assets/icons/icon-right.svg";
+
+interface Props extends HTMLAttributes<"figure"> {
+  image: ImageMetadata;
+  alt: string;
+  href: string;
+  // Fills the height of its container from tablet landscape up, instead of
+  // keeping a 4:3 ratio.
+  fill?: boolean;
+}
+
+const {
+  image,
+  alt,
+  href,
+  fill = false,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<figure
+  {...rest}
+  class:list={["project-card", { "project-card--fill": fill }, className]}
+>
+  <Image class="project-card__image" src={image} alt={alt} />
+  <Button
+    label="Project details"
+    aria-label={`Project details: ${alt}`}
+    href={href}
+    variant="tertiary"
+    class="project-card__button"
+  >
+    <IconRight slot="icon" />
+  </Button>
+</figure>
+
+<style is:global>
+  @layer components {
+    .project-card {
+      position: relative;
+      padding: var(--space-step-5);
+    }
+
+    .project-card,
+    .project-card__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-card__image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .project-card__button {
+      position: absolute;
+      inset-block-end: var(--space-step-5);
+    }
+
+    @media screen and (width > 56.25em) {
+      .project-card--fill,
+      .project-card--fill .project-card__image {
+        aspect-ratio: unset;
+        block-size: 100%;
+      }
+    }
+  }
+</style>

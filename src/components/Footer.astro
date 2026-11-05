@@ -1,0 +1,113 @@
+---
+import GreenscapeLogo from "./GreenscapeLogo.astro";
+import SocialMedia from "./SocialMedia.astro";
+---
+
+<footer class="site-footer">
+  <div class="container flow-section">
+    <h2 class="sr-only">Footer</h2>
+    <div class="site-footer__layout">
+      <GreenscapeLogo class="site-footer__logo" />
+      <nav class="footer-nav" aria-labelledby="footer-nav-company">
+        <h3 id="footer-nav-company" class="footer-nav__heading text-style-h4">
+          Company
+        </h3>
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              About us
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Sustainability practices
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Blog
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Contact us
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-legal">
+        <h3 id="footer-nav-legal" class="footer-nav__heading text-style-h4">
+          Legal
+        </h3>
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Privacy policy
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Cookie policy
+            </a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#0" class="footer-nav__link">
+              Terms of service
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <SocialMedia />
+    </div>
+    <div class="site-footer__notice">
+      <p class="site-footer__copyright">
+        &copy; GreenScape 2026. All Rights Reserved.
+      </p>
+      <p class="site-footer__concept-notice">
+        This is a concept project for a fictional business.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  @layer components {
+    .site-footer {
+      padding-block-start: var(--space-step-10);
+      padding-block-end: var(--size-32);
+      background-color: var(--color-surface-primary);
+    }
+
+    .site-footer__layout {
+      display: grid;
+      align-items: start;
+      gap: var(--size-32);
+
+      @media screen and (width > 37.5em) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      @media screen and (width > 56.25em) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .footer-nav__heading {
+      margin-block-end: var(--size-16);
+    }
+
+    .footer-nav__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-8);
+    }
+
+    .site-footer__notice {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-step-1);
+    }
+  }
+</style>

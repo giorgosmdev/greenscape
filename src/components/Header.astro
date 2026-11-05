@@ -1,0 +1,38 @@
+---
+import MainNav from "./MainNav.astro";
+import GreenscapeLogo from "./GreenscapeLogo.astro";
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__layout">
+      <GreenscapeLogo class="site-header__logo" data-menu-interactive />
+
+      <MainNav />
+    </div>
+  </div>
+</header>
+
+<style is:global>
+  @layer components {
+    .site-header {
+      padding-block: var(--space-step-5);
+
+      a {
+        padding: var(--space-step-1);
+      }
+    }
+
+    .site-header__layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--layout-grid-gap);
+    }
+
+    .site-header__logo {
+      z-index: 1000;
+    }
+  }
+</style>

@@ -1,0 +1,90 @@
+/* --- Sizes for media queries --- */
+
+/*
+tablet-port-up: 37.5em; // 600px
+tablet-land-up: 56.25em; // 900px
+desktop-up: 75em; // 1200px
+desktop-large-up: 112.5em; // 1800px */
+
+/* --- Layout Patterns --- */
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex-grow: 1;
+}
+
+.section {
+  padding-block: var(--space-section-padding);
+  position: relative;
+}
+
+.container {
+  inline-size: min(
+    var(--layout-container-width),
+    100% - (var(--space-container-padding) * 2)
+  );
+  margin-inline: auto;
+}
+
+/*
+  Split container
+  Use in section with fullbleed image.
+  This class gets applied to the part that should be contained, e.g. the content.
+  Activated on desktop.
+*/
+@media screen and (width > 75em) {
+  .container--split {
+    /*
+    Sets the size to half of the container
+    removes half the grid gap
+    removes inline padding on one side equal to container padding
+    */
+    inline-size: min(
+      (var(--layout-container-width) / 2 - var(--layout-grid-gap) / 2),
+      100% - var(--space-container-padding)
+    );
+    margin-inline-start: unset;
+  }
+
+  .container--split-start {
+    margin-inline-start: auto;
+    margin-inline-end: 0;
+  }
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(var(--layout-grid-columns), minmax(0, 1fr));
+  gap: var(--layout-grid-gap);
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--grid-min, 22.5rem)), 1fr)
+  );
+  gap: var(--layout-grid-gap);
+}
+
+.flex-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-grid-gap);
+
+  > * {
+    flex: 1 1 var(--flex-min, 20rem);
+  }
+}
+
+.flow-section > * + * {
+  margin-block-start: var(--space-flow-section);
+}
+
+.flow-content > * + * {
+  margin-block-start: var(--flow-space, var(--space-flow-content));
+}

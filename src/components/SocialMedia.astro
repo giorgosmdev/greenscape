@@ -1,0 +1,49 @@
+---
+import IconFacebook from "../assets/icons/icon-facebook.svg";
+import IconInstagram from "../assets/icons/icon-instagram.svg";
+import IconLinkedin from "../assets/icons/icon-linkedin.svg";
+---
+
+<ul class="social-media">
+  <li class="social-media__item">
+    <a href="#0" class="social-media__link" aria-label="Facebook">
+      <IconFacebook />
+    </a>
+  </li>
+
+  <li class="social-media__item">
+    <a href="#0" class="social-media__link" aria-label="Instagram">
+      <IconInstagram />
+    </a>
+  </li>
+
+  <li class="social-media__item">
+    <a href="#0" class="social-media__link" aria-label="LinkedIn">
+      <IconLinkedin />
+    </a>
+  </li>
+</ul>
+
+<style is:global>
+  @layer components {
+    .social-media {
+      display: flex;
+      gap: var(--size-24);
+    }
+
+    .social-media__link {
+      position: relative;
+      display: block;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        inline-size: var(--size-48);
+        block-size: var(--size-48);
+        translate: -50% -50%;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,384 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/pages/home.css";
+
+// Components
+import Button from "../components/Button.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import WorksCard from "../components/WorksCard.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import PricingCard from "../components/PricingCard.astro";
+
+// Images
+import { Image } from "astro:assets";
+import HeroImage1 from "../assets/images/hero-image-1.jpg";
+import HeroImage2 from "../assets/images/hero-image-2.jpg";
+import HomePromoImage from "../assets/images/promo-image.jpg";
+import ProjectImage1 from "../assets/images/project-image-1.jpg";
+import ProjectImage2 from "../assets/images/project-image-2.jpg";
+import MichelleImage from "../assets/images/michelle-image.jpg";
+import JamesImage from "../assets/images/james-image.jpg";
+import SarahImage from "../assets/images/sarah-image.jpg";
+
+import { getImage } from "astro:assets";
+import ServicesImage from "../assets/images/services-image.jpg";
+import ServiceImageMobile from "../assets/images/services-image-mobile.jpg";
+const desktop = await getImage({
+  src: ServicesImage,
+  format: "webp",
+  width: 537,
+  densities: [1, 2],
+});
+const mobile = await getImage({
+  src: ServiceImageMobile,
+  format: "webp",
+  widths: [342, 684],
+});
+
+// Icons
+import IconRight from "../assets/icons/icon-right.svg";
+---
+
+<BaseLayout
+  pageTitle="GreenScape"
+  description="We create sustainable, beautiful landscapes that enhance the natural beauty of your home or business."
+>
+  {/* SECTION HERO */}
+  <section class="hero section" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__layout grid-layout">
+        <div class="hero__content">
+          <div class="hero__heading-group heading-group">
+            <h1 id="hero-heading" class="hero__heading">
+              Transform your outdoor space, the eco-friendly way
+            </h1>
+            <span class="text-style-eyebrow">
+              Residential · Commercial · Sustainable
+            </span>
+          </div>
+
+          <p class="hero__text">
+            At GreenScape, we create sustainable, beautiful landscapes that
+            enhance the natural beauty of your home or business.
+          </p>
+
+          <Button variant="primary" label="Get a free quote" href="#0">
+            <IconRight slot="icon" />
+          </Button>
+        </div>
+
+        <figure class="hero__media hero__media--first">
+          <Image
+            src={HeroImage1}
+            alt="Modern villa garden"
+            class="hero__image"
+            loading="eager"
+          />
+        </figure>
+
+        <figure class="hero__media hero__media--second">
+          <Image
+            src={HeroImage2}
+            alt="Modern green landscaping"
+            class="hero__image"
+            loading="eager"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION FEATURED */}
+  <section class="featured section" aria-labelledby="featured-heading">
+    <div class="container">
+      <div class="featured__layout">
+        <h2 id="featured-heading" class="featured__heading text-style-h5">
+          As featured in
+        </h2>
+
+        <ul class="featured__list">
+          <li class="featured__item text-style-h3">EcoLiving Today</li>
+          <li class="featured__item text-style-h3">Green Living Weekly</li>
+          <li class="featured__item text-style-h3">Home &amp; Garden</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION SERVICES */}
+  <section
+    class="services section"
+    id="services"
+    aria-labelledby="services-heading"
+  >
+    <div class="container flow-section">
+      <header class="heading-block">
+        <div class="heading-group">
+          <h2
+            id="services-heading"
+            class="services__heading heading-block__heading"
+          >
+            Sustainable landscaping tailored to you
+          </h2>
+          <span class="text-style-eyebrow">Our services</span>
+        </div>
+      </header>
+
+      <div class="services__layout grid-layout">
+        <picture class="services__media">
+          <source
+            media="(min-width: 56.25em)"
+            srcset={desktop.srcSet.attribute}
+            width="537"
+            height="717"
+          />
+          <img
+            src={mobile.src}
+            srcset={mobile.srcSet.attribute}
+            sizes="100vw"
+            alt="Garden with stone paving, gravel beds and clipped shrubs"
+            width="342"
+            height="484"
+            loading="lazy"
+            decoding="async"
+            class="services__image"
+          />
+        </picture>
+
+        <ul class="services__list">
+          <li class="services__item">
+            <ServiceCard
+              headingLevel={3}
+              heading="Custom garden design"
+              text="Let us design a personalized garden that complements your lifestyle and taste. From flower beds to vegetable gardens, we create spaces that bring nature to your doorstep."
+            />
+          </li>
+          <li class="services__item">
+            <ServiceCard
+              headingLevel={3}
+              heading="Lawn care & maintenance"
+              text="Keep your lawn looking pristine year-round with our eco-friendly lawn care services, including mowing, fertilizing, and organic pest control."
+            />
+          </li>
+          <li class="services__item">
+            <ServiceCard
+              headingLevel={3}
+              heading="Hardscaping"
+              text="Whether you need a patio, walkway, or retaining wall, we build durable and attractive hardscape features that enhance the functionality and style of your outdoor space."
+            />
+          </li>
+          <li class="services__item">
+            <ServiceCard
+              headingLevel={3}
+              heading="Irrigation systems"
+              text="Save water and promote plant health with our smart irrigation systems, designed to use only what’s needed for sustainable watering."
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION HOW IT WORKS */}
+  <section class="works section" aria-labelledby="works-heading">
+    <div class="container flow-section">
+      <header class="works__header heading-block">
+        <div class="heading-group">
+          <h2 id="works-heading" class="works__heading heading-block__heading">
+            Your dream yard in 3 simple steps
+          </h2>
+          <span class="text-style-eyebrow">How it works</span>
+        </div>
+
+        <Button variant="secondary" label="Schedule your consultation" href="#0">
+          <IconRight slot="icon" />
+        </Button>
+      </header>
+
+      <ol class="works__list">
+        <li class="works__item">
+          <WorksCard
+            headingLevel={3}
+            number="01"
+            heading="Consultation"
+            text="Schedule a free consultation where we’ll discuss your vision, budget, and specific needs."
+          />
+        </li>
+        <li class="works__item">
+          <WorksCard
+            headingLevel={3}
+            number="02"
+            heading="Design & plan"
+            text="Our team will create a custom design, blending functionality with aesthetic appeal, all while keeping sustainability in mind."
+          />
+        </li>
+        <li class="works__item">
+          <WorksCard
+            headingLevel={3}
+            number="03"
+            heading="Build & maintain"
+            text="We handle everything from installation to ongoing maintenance, ensuring your outdoor space remains beautiful and eco-friendly for years to come."
+          />
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {/* SECTION PROJECTS */}
+  <section
+    class="projects section"
+    id="projects"
+    aria-labelledby="projects-heading"
+  >
+    <div class="container">
+      <div class="projects__layout grid-layout">
+        <header class="projects__header heading-block">
+          <div class="heading-group">
+            <h2
+              id="projects-heading"
+              class="projects__heading heading-block__heading"
+            >
+              Designed for outdoor living
+            </h2>
+            <span class="text-style-eyebrow">Projects</span>
+          </div>
+        </header>
+
+        <ul class="projects__list">
+          <li class="projects__item">
+            <ProjectCard
+              image={ProjectImage1}
+              alt="Courtyard garden with timber steps, boulders and moss beside a modern home"
+              href="#0"
+            />
+          </li>
+          <li class="projects__item">
+            <ProjectCard
+              image={ProjectImage2}
+              alt="Gravel garden with stepping stones and a covered timber deck"
+              href="#0"
+              fill
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION TESTIMONIALS */}
+  <section class="testimonials section" aria-labelledby="testimonials-heading">
+    <div class="container flow-section">
+      <header class="heading-block">
+        <div class="heading-group">
+          <h2 id="testimonials-heading" class="heading-block__heading">
+            What our clients say
+          </h2>
+          <span class="text-style-eyebrow">Testimonials</span>
+        </div>
+      </header>
+
+      <ul class="testimonials__list">
+        <li class="testimonials__item">
+          <TestimonialCard
+            quote="GreenScape turned my plain backyard into an oasis. They worked with my vision and gave it a sustainable twist that makes me proud every time I step outside."
+            name="Michelle"
+            image={MichelleImage}
+            alt="Happy homeowner"
+          />
+        </li>
+        <li class="testimonials__item">
+          <TestimonialCard
+            quote="The team at GreenScape was fantastic. They created a beautiful patio and garden area for my business, and I love that everything is eco-friendly."
+            name="James"
+            image={JamesImage}
+            alt="Happy homeowner"
+          />
+        </li>
+        <li class="testimonials__item">
+          <TestimonialCard
+            quote="Our garden is flourishing, and the best part is knowing that everything was designed with the environment in mind."
+            name="Sarah"
+            image={SarahImage}
+            alt="Happy homeowner"
+          />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {/* SECTION SOCIAL PROOF */}
+  <section class="social-proof section" aria-labelledby="social-proof-heading">
+    <div class="container">
+      <h2 id="social-proof-heading" class="social-proof__heading text-center">
+        Trusted by over 200 happy homeowners and businesses in our community.
+      </h2>
+    </div>
+  </section>
+
+  {/* SECTION PROMO */}
+  <div class="home-promo">
+    <div class="container">
+      <div class="home-promo__media">
+        <Image
+          src={HomePromoImage}
+          alt="Villa with a beautiful and modern garden"
+          class="home-promo__image"
+          width="1312"
+          height="735"
+        />
+      </div>
+    </div>
+  </div>
+
+  {/* SECTION PRICING */}
+  <section class="pricing section" aria-labelledby="pricing-heading">
+    <div class="container flow-section">
+      <header class="heading-block">
+        <div class="heading-group">
+          <h2
+            id="pricing-heading"
+            class="pricing__header heading-block__heading"
+          >
+            Affordable landscaping for every budget
+          </h2>
+          <span class="text-style-eyebrow">Pricing</span>
+        </div>
+      </header>
+
+      <ul class="pricing__list grid-auto-fit">
+        <li class="pricing__item">
+          <PricingCard
+            headingLevel={3}
+            tier="Basic package"
+            price="500"
+            buttonLabel="Select"
+            buttonHref="#0"
+            description="Ideal for small garden designs, including installation and a detailed maintenance plan."
+          />
+        </li>
+        <li class="pricing__item">
+          <PricingCard
+            headingLevel={3}
+            featured
+            tier="Premium package"
+            price="1500"
+            buttonLabel="Select"
+            buttonHref="#0"
+            description="Full-service landscaping with custom design, plant selection, and hardscaping features."
+          />
+        </li>
+        <li class="pricing__item">
+          <PricingCard
+            headingLevel={3}
+            variant="custom"
+            tier="Custom projects"
+            buttonLabel="Contact us for a custom quote"
+            buttonHref="#0"
+            description="Have a bigger project in mind? Let’s work together to create something unique."
+          />
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

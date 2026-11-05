@@ -1,0 +1,118 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Button from "./Button.astro";
+import IconRight from "../assets/icons/icon-right.svg";
+
+interface Base extends HTMLAttributes<"article"> {
+  tier: string;
+  description: string;
+  headingLevel: 2 | 3 | 4 | 5 | 6;
+  featured?: boolean;
+  buttonLabel: string;
+  buttonHref: string;
+}
+
+interface Priced extends Base {
+  variant?: "priced";
+  price: string;
+  priceLabel?: string;
+  priceText?: never;
+}
+
+interface Custom extends Base {
+  variant: "custom";
+  priceText?: string;
+  price?: never;
+  priceLabel?: never;
+}
+
+type Props = Priced | Custom;
+
+const {
+  variant = "priced",
+  tier,
+  description,
+  headingLevel,
+  featured = false,
+  price,
+  priceLabel = "Starting at",
+  priceText = "Pricing upon consultation",
+  buttonLabel,
+  buttonHref,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const isCustom = variant === "custom";
+const Heading = `h${headingLevel}` as const;
+---
+
+<article
+  {...rest}
+  class:list={[
+    "pricing-card",
+    "flow-content",
+    { "pricing-card--featured": featured, "pricing-card--custom": isCustom },
+    className,
+  ]}
+>
+  <Heading class="pricing-card__tier text-style-h5">{tier}</Heading>
+
+  {isCustom ? (
+    <p class="pricing-card__custom-price text-style-h4">{priceText}</p>
+  ) : (
+    <div class="pricing-card__pricing">
+      <span class="pricing-card__label">{priceLabel}</span>
+      <span class="pricing-card__price text-style-h3">€{price}</span>
+    </div>
+  )}
+
+  <p class="pricing-card__description">{description}</p>
+
+  <Button
+    class="pricing-card__button"
+    variant={featured ? "primary" : "secondary"}
+    label={buttonLabel}
+    aria-label={`${buttonLabel}: ${tier}`}
+    href={buttonHref}
+  >
+    <IconRight slot="icon" />
+  </Button>
+</article>
+
+<style is:global>
+  @layer components {
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-step-6);
+      padding: var(--space-step-5);
+      border-radius: var(--radius-md);
+      background-color: var(--color-surface-secondary);
+    }
+
+    .pricing-card--featured {
+      background-color: var(--color-surface-brand);
+    }
+
+    .pricing-card--featured ::selection {
+      background-color: var(--color-brand-900);
+      color: var(--color-brand-200);
+    }
+
+    .pricing-card__label,
+    .pricing-card__price {
+      display: block;
+    }
+
+    .pricing-card__custom-price {
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .pricing-card__button {
+      margin-block-start: auto;
+      align-self: flex-start;
+    }
+  }
+</style>

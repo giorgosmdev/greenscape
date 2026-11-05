@@ -1,0 +1,265 @@
+<button
+  class="menu-button"
+  id="menu-button"
+  type="button"
+  aria-label="Menu"
+  aria-expanded="false"
+  aria-controls="main-nav"
+>
+  <svg
+    class="menu-button__icon"
+    viewBox="0 0 100 100"
+    fill="currentColor"
+    width="48"
+    height="48"
+    aria-hidden="true"
+  >
+    <rect
+      class="menu-button__line menu-button__line--top"
+      width="80"
+      height="8"
+      x="10"
+      y="25"
+      rx="4"
+    ></rect>
+    <rect
+      class="menu-button__line menu-button__line--middle"
+      width="80"
+      height="8"
+      x="10"
+      y="45"
+      rx="4"
+    ></rect>
+    <rect
+      class="menu-button__line menu-button__line--bottom"
+      width="80"
+      height="8"
+      x="10"
+      y="65"
+      rx="4"
+    ></rect>
+  </svg>
+</button>
+<nav class="main-nav" id="main-nav" aria-label="Main">
+  <ul class="main-nav__list">
+    <li class="main-nav__item">
+      <a href="#services" class="main-nav__link text-style-link">
+        Services
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a href="#projects" class="main-nav__link text-style-link">
+        Projects
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a href="#0" class="main-nav__link text-style-link">
+        About
+      </a>
+    </li>
+    <li class="main-nav__item">
+      <a href="#0" class="main-nav__link text-style-link">
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style is:global>
+  @layer components {
+    .main-nav__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-step-6);
+    }
+
+    .main-nav__link {
+      display: inline-block;
+      padding-block: var(--space-step-1);
+    }
+
+    /* Mobile */
+    @media screen and (width <= 56.25em) {
+      /* Stops background scrolling when navigation menu is open */
+      html:has(.menu-button[aria-expanded="true"]) {
+        overflow: hidden;
+      }
+
+      .js .main-nav {
+        block-size: 100svb;
+        overflow-y: auto;
+        position: fixed;
+        inset-block-start: -100%;
+        inset-inline: 0;
+        z-index: 900;
+        display: flex;
+        align-items: safe center;
+        justify-content: center;
+        transition: inset 400ms ease-out;
+        background-color: var(--color-surface-brand);
+      }
+
+      .js .menu-button[aria-expanded="true"] + .main-nav {
+        inset: 0;
+      }
+
+      .js .main-nav__list {
+        flex-direction: column;
+      }
+
+      .js .main-nav__link {
+        font-size: var(--font-size-h2);
+      }
+    }
+
+    /* Nav button styles */
+    .menu-button {
+      block-size: var(--size-48);
+      position: relative;
+      z-index: 1000;
+
+      html:not(.js) & {
+        display: none;
+      }
+
+      @media screen and (width > 56.25em) {
+        display: none;
+      }
+    }
+
+    /* Close animation */
+    .menu-button__line {
+      transition:
+        y 150ms ease-in 150ms,
+        rotate 150ms ease-in,
+        opacity 0ms 150ms;
+      transform-origin: center;
+    }
+
+    /* Open animation */
+    .menu-button[aria-expanded="true"] .menu-button__line {
+      transition:
+        y 150ms ease-in,
+        rotate 150ms ease-in 150ms,
+        opacity 0ms 150ms;
+    }
+
+    .menu-button[aria-expanded="true"]
+      :is(.menu-button__line--top, .menu-button__line--bottom) {
+      y: 45px;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-button__line--top {
+      rotate: 45deg;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-button__line--bottom {
+      rotate: -45deg;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-button__line--middle {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const navButton = document.querySelector<HTMLButtonElement>(".menu-button");
+  const navMenu = document.querySelector(".main-nav");
+  const navLinks = document.querySelectorAll(".main-nav__link");
+
+  const media = window.matchMedia("(width <= 56.25em)");
+  media.addEventListener("change", (e) => updateNav(e));
+
+  // Elements this script made inert, so closing the menu only undoes these.
+  let inertElements: Element[] = [];
+
+  // Keeps everything outside the mobile menu out of the tab order while the
+  // overlay covers it. Walks up from the nav and marks every sibling at each
+  // level inert (except the menu button and elements marked
+  // data-menu-interactive, which stay visible above the overlay), so new
+  // header or page elements are covered without listing them here.
+  function setBackgroundInert(isInert: boolean) {
+    if (!isInert) {
+      inertElements.forEach((el) => el.removeAttribute("inert"));
+      inertElements = [];
+      return;
+    }
+
+    let current: Element | null = navMenu;
+    while (current && current !== document.body) {
+      const siblings = Array.from(current.parentElement?.children ?? []);
+      for (const sibling of siblings) {
+        if (
+          sibling === current ||
+          sibling === navButton ||
+          sibling.hasAttribute("data-menu-interactive") ||
+          sibling.hasAttribute("inert")
+        ) {
+          continue;
+        }
+        sibling.setAttribute("inert", "");
+        inertElements.push(sibling);
+      }
+      current = current.parentElement;
+    }
+  }
+
+  // Adds or removes inert to navMenu depending on device, and always
+  // resets to the closed state so a resize across the breakpoint can't
+  // leave a stale aria-expanded value (e.g. a menu left open on mobile,
+  // then resized to desktop and back, would otherwise render visible
+  // while still marked inert).
+  function updateNav(e: MediaQueryList | MediaQueryListEvent) {
+    const isMobile = e.matches;
+    navButton?.setAttribute("aria-expanded", "false");
+    if (isMobile) {
+      navMenu?.setAttribute("inert", "");
+    } else {
+      navMenu?.removeAttribute("inert");
+    }
+    setBackgroundInert(false);
+  }
+
+  function closeMenu() {
+    navButton?.setAttribute("aria-expanded", "false");
+    // Add back inert to mobile only
+    if (media.matches) {
+      navMenu?.setAttribute("inert", "");
+    }
+    setBackgroundInert(false);
+  }
+
+  navButton?.addEventListener("click", () => {
+    const isOpened = navButton.getAttribute("aria-expanded");
+    if (isOpened === "false") {
+      navButton.setAttribute("aria-expanded", "true");
+      // Removes inert to allow tab navigation when menu opens
+      navMenu?.removeAttribute("inert");
+      setBackgroundInert(true);
+    } else {
+      closeMenu();
+    }
+  });
+
+  // Close menu when click on anchor-link
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close the open menu with Escape and move focus back to the button,
+  // since focus on a nav link would be lost once the nav becomes inert.
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key !== "Escape" ||
+      navButton?.getAttribute("aria-expanded") !== "true"
+    ) {
+      return;
+    }
+    closeMenu();
+    navButton.focus();
+  });
+
+  updateNav(media);
+</script>

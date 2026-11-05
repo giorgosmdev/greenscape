@@ -1,0 +1,19 @@
+@layer reset, tokens, base, layout, components, pages, utilities;
+
+@layer pages {
+  .site-main:has(> .not-found) {
+    display: grid;
+  }
+
+  .not-found {
+    display: grid;
+    align-content: center;
+  }
+
+  .not-found__layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-flow-content);
+  }
+}

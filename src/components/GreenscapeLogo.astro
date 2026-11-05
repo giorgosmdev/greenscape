@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+// Icons
+import GreenscapeLogoIcon from "../assets/icons/greenscape-logo.svg";
+
+interface Props extends HTMLAttributes<"a"> {}
+
+const { class: className, ...rest } = Astro.props;
+
+// Homepage URL, including `base` from astro.config.mjs
+const homeURL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<a
+  {...rest}
+  class:list={["greenscape-logo", className]}
+  href={homeURL}
+  aria-label="GreenScape homepage"
+>
+  <GreenscapeLogoIcon class="greenscape-logo__icon" />
+  <span class="greenscape-logo__text text-style-h4">GreenScape</span>
+</a>
+
+<style is:global>
+  @layer components {
+    .greenscape-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-step-2);
+    }
+  }
+</style>

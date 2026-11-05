@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/pages/404.css";
+import Button from "../components/Button.astro";
+
+// Homepage URL, including `base` from astro.config.mjs
+const homeURL = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<BaseLayout pageTitle="404 - Page not found">
+  <section class="not-found section">
+    <div class="container">
+      <div class="not-found__layout text-center">
+        <h1 class="not-found__heading text-style-h0">
+          404<span class="sr-only"> – Page not found</span>
+        </h1>
+        <p class="not-found__text">
+          The page you are looking for does not exist.
+        </p>
+        <Button href={homeURL} variant="primary" label="Back to homepage" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

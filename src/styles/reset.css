@@ -1,0 +1,102 @@
+/* ------------------------------ */
+/* RESET */
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* add in-page scroll animation for users who haven't opted-in for reduced motion */
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  /* Removes layout shifts when browser scrollbar appears */
+  /* scrollbar-gutter: stable; */
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 7. Avoid text overflows */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* 9. Custom reset values */
+:where(a[class]) {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+:where(ul[class], ol[class]) {
+  padding: 0;
+  list-style: none;
+}
+
+:where(button) {
+  background: none;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+:where(fieldset) {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(legend) {
+  padding: 0;
+}
